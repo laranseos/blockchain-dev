@@ -1,0 +1,720 @@
+:root {
+  --max-width: 1100px;
+  --border-radius: 12px;
+  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
+    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+
+  --primary-glow: conic-gradient(
+    from 180deg at 50% 50%,
+    #16abff33 0deg,
+    #0885ff33 55deg,
+    #54d6ff33 120deg,
+    #0071ff33 160deg,
+    transparent 360deg
+  );
+  --secondary-glow: radial-gradient(
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+
+  --tile-start-rgb: 239, 245, 249;
+  --tile-end-rgb: 228, 232, 233;
+  --tile-border: conic-gradient(
+    #00000080,
+    #00000040,
+    #00000030,
+    #00000020,
+    #00000010,
+    #00000010,
+    #00000080
+  );
+
+  --callout-rgb: 238, 240, 241;
+  --callout-border-rgb: 172, 175, 176;
+  --card-rgb: 180, 185, 188;
+  --card-border-rgb: 131, 134, 135;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+
+    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
+    --secondary-glow: linear-gradient(
+      to bottom right,
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0.3)
+    );
+
+    --tile-start-rgb: 2, 13, 46;
+    --tile-end-rgb: 2, 5, 19;
+    --tile-border: conic-gradient(
+      #ffffff80,
+      #ffffff40,
+      #ffffff30,
+      #ffffff20,
+      #ffffff10,
+      #ffffff10,
+      #ffffff80
+    );
+
+    --callout-rgb: 20, 20, 20;
+    --callout-border-rgb: 108, 108, 108;
+    --card-rgb: 100, 100, 100;
+    --card-border-rgb: 200, 200, 200;
+  }
+}
+
+@font-face {
+  font-family: 'NippoBold';
+  src: local('NippoBold'), url(../public/fonts/NippoBold.ttf) format('opentype');
+}
+
+@font-face {
+  font-family: 'NippoExtralight';
+  src: local('NippoExtralight'),
+    url(../public/fonts/NippoExtralight.ttf) format('opentype');
+}
+
+@font-face {
+  font-family: 'NippoLight';
+  src: local('NippoLight'),
+    url(../public/fonts/NippoLight.ttf) format('opentype');
+}
+
+@font-face {
+  font-family: 'NippoMedium';
+  src: local('NippoMedium'),
+    url(../public/fonts/NippoMedium.ttf) format('opentype');
+}
+
+@font-face {
+  font-family: 'NippoRegular';
+  src: local('NippoRegular'),
+    url(../public/fonts/NippoRegular.ttf) format('opentype');
+}
+
+@font-face {
+  font-family: 'NippoVariable';
+  src: local('NippoVariable'),
+    url(../public/fonts/NippoVariable.ttf) format('opentype');
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+.nav-container {
+  /* background: white; */
+  padding: 1em;
+}
+
+.nav-bar .logo {
+  color: black !important;
+  font-family: 'NippoMedium' !important;
+  font-size: 2rem;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* padding: 6rem; */
+  /* padding-bottom: 5rem; */
+  position: relative;
+  background-color: white;
+  height: 100vh;
+}
+
+.gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  /* background: radial-gradient(ellipse at top, #140f00, #141619), radial-gradient(ellipse at bottom, #141619, #141619);  */
+  /* animation: gradient 15s ease infinite; */
+  height: 100vh;
+  background: url('https://robertsspaceindustries.com/rsi/static/images/gridbg_glow.png')
+    repeat !important;
+  background-size: contain;
+  /* filter: invert(); */
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.4;
+  filter: grayscale(100%) contrast(200%);
+  z-index: 6;
+}
+
+.lines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  /* background: radial-gradient(ellipse at top, #140f00, #141619), radial-gradient(ellipse at bottom, #141619, #141619);  */
+  /* animation: gradient 15s ease infinite; */
+  height: 100vh;
+  background-image: url('../public/lines.svg');
+  background-size: contain;
+  filter: invert();
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  /* filter: grayscale(100%) contrast(200%); */
+  z-index: 7;
+}
+
+.bg-text {
+  font-size: 22vw;
+  font-family: 'NippoBold';
+  position: absolute;
+  bottom: 0;
+}
+
+.presale-div {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 999;
+}
+
+/* @keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+} */
+
+.card-main {
+  padding: 2em;
+  /* border-radius: var(--border-radius);
+  background: rgba(var(--card-rgb), 0); */
+  /* border: 30px solid white; */
+  row-gap: 15px;
+  transition: background 200ms, border 200ms;
+  background-color: black;
+  /* border: solid 1px #34343D; */
+  width: 50%;
+  height: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center !important;
+  align-items: center !important;
+  flex-direction: column;
+  position: relative;
+  z-index: 11;
+  --aug-border-bg: #bbbbbb;
+  --aug-border-all: 0.9px;
+  --aug-inlay-bg: transparent;
+}
+
+.eth {
+  /* filter:invert() */
+}
+
+.card-main input {
+  width: 100%;
+  border: none;
+  padding-top: 5px;
+  background-color: transparent;
+  height: 30px;
+  outline: none;
+  font-size: 2.2rem;
+  color: black;
+}
+
+.card-main input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.card-main span {
+  display: flex;
+  align-items: center;
+}
+.input-head {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+.input-balance {
+  font-family: 'NippoMedium';
+  font-size: 0.7rem;
+  color: #41464b;
+}
+
+.input-title {
+  font-family: 'NippoMedium';
+  font-size: 1.2rem;
+  color: #41464b;
+}
+
+.max-amount {
+  border: none;
+  background-color: black;
+  color: white;
+  padding: 1px 3px;
+  font-size: 10px;
+  border-radius: 3px;
+}
+
+.input-grp {
+  width: 100%;
+  /* border: solid 1px #000000; */
+  padding: 1.5rem;
+  border-radius: 15px;
+  background-color: white;
+  --aug-border-bg: white;
+  --aug-border-all: 1px;
+  --aug-inlay-bg: transparent;
+}
+
+.input-group-inline {
+  /* background-color: #2F2F37; */
+  width: 100%;
+  /* background-color: white; */
+  /* border: solid 1px #34343D; */
+  column-gap: 30px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-between;
+  /* padding: 0.9em; */
+  border-radius: 10px;
+  font-family: 'NippoBold';
+  font-size: 6rem;
+  /* border: solid 1px rgb(255 255 255 / 12%); */
+}
+
+.input-group-inline:active {
+  border: none;
+}
+
+.input-group-inline:focus-visible {
+  border: none !important;
+  outline: none !important;
+}
+
+/* .input-group-inline button{
+
+  box-sizing: border-box;
+  margin: 0px;
+  border: none;
+  outline: none;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  font-weight: 700;
+  width: auto;
+  line-height: 1em;
+  font-size: 10px;
+  border-radius: 6px;
+  padding: 11px 16px;
+  min-width: 50px;
+  background-color: #ffff85;
+  -webkit-box-flex: 0;
+  flex-grow: 0;
+  flex-shrink: 0;
+  cursor: inherit;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  padding-left: 16px;
+  color: black;
+  font-family: system-ui;
+
+} */
+
+.button-group {
+  width: 100%;
+}
+
+.button-group button {
+  box-sizing: border-box;
+  margin: 0px;
+  border: none;
+  outline: none;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  font-weight: 400;
+  width: 100%;
+  line-height: 1em;
+  font-size: 20px;
+  /* border-radius: 10px; */
+  padding: 15px 30px;
+  min-width: 120px;
+  font-family: 'NippoBold';
+  color: black;
+  text-transform: uppercase;
+  background-color: white;
+  transition: background-color 100ms ease 0s;
+  /* font-family: system-ui; */
+}
+
+.button-group button:disabled {
+  color: gray;
+}
+
+.button-group .claim {
+  box-sizing: border-box;
+  margin: 0px;
+  border: none;
+  outline: none;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  font-weight: 400;
+  width: 100%;
+  line-height: 1em;
+  font-size: 20px;
+  /* border-radius: 10px; */
+  padding: 15px 30px;
+  min-width: 120px;
+  font-family: 'NippoBold';
+  color: white;
+  text-transform: uppercase;
+  background-color: black;
+  transition: background-color 100ms ease 0s;
+  --aug-border-bg: white;
+  --aug-border-all: 1px;
+  --aug-inlay-bg: transparent;
+}
+
+.info-group {
+  width: 100%;
+  display: flex;
+  row-gap: 15px;
+  flex-direction: column;
+
+  /* background-color: #2f2f37; */
+  padding: 10px;
+  /* border-bottom: 10px; */
+  border-radius: 10px;
+  border: solid 1px rgb(255 255 255 / 12%);
+}
+
+.sub-info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-family: system-ui;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6em;
+  color: white;
+  font-family: 'NippoMedium';
+}
+
+.info {
+  font-family: 'NippoLight';
+  color: white;
+}
+
+/* =================================================================*/
+
+.title {
+  margin-top: 40px;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-family: system-ui;
+  width: 38%;
+}
+.sub-title {
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 40px;
+  font-family: system-ui;
+  width: 38%;
+  text-align-last: center;
+}
+
+.main-title {
+  margin-top: 50px;
+  color: white;
+  font-size: 50px;
+  font-weight: 600;
+  font-family: system-ui;
+  width: 38%;
+  text-align-last: center;
+}
+
+.statics {
+  padding: 1rem 1.2rem;
+  border-radius: var(--border-radius);
+  background: rgba(var(--card-rgb), 0);
+  border: 1px solid rgba(var(--card-border-rgb), 0);
+  row-gap: 15px;
+  transition: background 200ms, border 200ms;
+  background-color: white;
+  border: solid 1px #34343d;
+  width: 38%;
+  /* height: 200px; */
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center !important;
+  align-items: center !important;
+  flex-direction: column;
+  position: relative;
+  z-index: 11;
+  /* margin-top: 20px; */
+}
+
+/* ===========================================================*/
+
+.accordion-div {
+  width: 38%;
+  z-index: 99;
+}
+
+.accordion-item {
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: none !important;
+}
+
+.accordion-header {
+  background-color: #34343d;
+  outline: none !important;
+}
+
+.accordion-header button {
+  background: #34343d;
+  color: white;
+  font-size: 12px;
+  font-family: system-ui;
+}
+
+.accordion-button::after {
+  filter: invert();
+}
+.accordion-button {
+  background-color: #34343d;
+  outline: none !important;
+}
+
+.accordion-body {
+  color: white;
+  font-size: 10px;
+  font-family: system-ui;
+  background-color: #2f2f37;
+  outline: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #34343d !important;
+  color: white !important;
+  font-size: 12px !important;
+  font-family: system-ui !important;
+}
+
+/*================================================================*/
+
+.nav-bar {
+  width: 100%;
+  margin-bottom: 50px;
+  background: transparent;
+  position: fixed;
+  top: 0;
+}
+
+.navbar navbar-expand-lg navbar-light bg-light {
+  background-color: transparent !important;
+}
+.header-connect {
+  margin-left: 40px;
+}
+.header-connect button {
+  box-sizing: border-box;
+  margin: 0px;
+  border: none;
+  outline: none;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 10px 20px;
+  color: white;
+  font-weight: 400;
+  background-color: black;
+  transition: background-color 100ms ease 0s;
+  line-height: 1em;
+  font-size: 20px;
+  /* border-radius: 10px; */
+  min-width: 120px;
+  font-family: 'NippoMedium';
+  text-transform: uppercase;
+}
+
+.me-auto {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.links-div {
+  display: flex;
+  column-gap: 30px;
+}
+
+.links-div a {
+  color: white;
+  font-size: 12px;
+  font-family: system-ui;
+}
+
+.links-div a:hover {
+  color: #ffff51;
+  font-size: 12px;
+  font-family: system-ui;
+}
+
+.navbar-brand {
+  font: 14px;
+  color: white !important;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.navbar-toggler {
+  filter: invert();
+}
+.nav-bar {
+  z-index: 99;
+}
+
+.modal {
+  backdrop-filter: blur(3px);
+}
+
+.modal .modal-dialog {
+  font-family: 'NippoLight';
+}
+
+.modal .modal-dialog.modal-small {
+  max-width: 300px;
+}
+
+.modal .modal-dialog .modal-content {
+  background-color: black;
+  border: 1px solid lightgray;
+}
+
+.modal .modal-dialog .modal-body {
+  border-radius: 0.5rem;
+}
+
+.modal .modal-dialog .modal-content div {
+  border: none;
+}
+
+.modal .modal-dialog .modal-content .wallet-item {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.modal .modal-dialog .modal-content .wallet-item:hover {
+  background-color: #282828;
+}
+
+.modal .modal-dialog .modal-content .wallet-item .wallet-icon {
+  border-radius: 100%;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 700px) {
+  .presale-div {
+    width: 97%;
+    margin-top: 5em;
+  }
+
+  .main-title {
+    width: 95%;
+  }
+  .sub-title {
+    width: 95%;
+  }
+  .card-main {
+    width: 95%;
+    padding: 1em;
+  }
+  .title {
+    width: 95%;
+  }
+  .statics {
+    width: 95%;
+  }
+  .title {
+    width: 95%;
+  }
+  .accordion-div {
+    width: 95%;
+  }
+
+  .me-auto {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .header-connect {
+    margin: 0;
+    width: 100%;
+  }
+
+  .navbar-toggler collapsed {
+    background-color: beige !important;
+  }
+}

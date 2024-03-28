@@ -1,0 +1,205 @@
+*,
+::before,
+::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	user-select: none;
+}
+
+@font-face {
+    font-family: 'Play';
+    src: url("../public/static/fonts/Play/Play-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'Press Start 2P';
+    src: url("../public/static/fonts/Press_Start_2P/PressStart2P-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'Digital Numbers';
+    src: url("../public/static/fonts/Digital_Numbers/DigitalNumbers-Regular.ttf");
+}
+
+:root {
+	--black: #000;
+	--background: #0B101D;
+	--white: #fff;
+	--primary-btn-hover-bg: rgba(255, 255, 255, 0.15);
+	--list-even-bg: #303030;
+	--modal-content-bg: #1c1c1c;
+	--gray: rgba(255, 255, 255, 0.4);
+}
+
+body {
+	background: var(--background);
+	color: var(--white);
+	font-family: sans-serif;
+	height: 100vh;
+
+	&::-webkit-scrollbar {
+		width: 0.1px;
+	}
+
+	/* Track */
+	&::-webkit-scrollbar-track {
+		background: #d9d9d9;
+	}
+
+	/* Handle */
+	&::-webkit-scrollbar-thumb {
+		background: #343434;
+	}
+}
+
+.bg-wrapper {
+	// background-image: url(/static/img/bandana-guy-and-coins.png), url(/static/img/2-Beans-B.png);
+	background-position: left 100px bottom, right 100px bottom;
+	background-repeat: no-repeat, no-repeat;
+	height: 100%;
+	padding: 40px 0;
+	display: flex;
+	flex-direction: column;
+
+	@media (max-width: 1440px) {
+		background-position: 0px bottom, right 170px;
+		background-size: 550px;
+	}
+}
+
+img {
+	width: 100%;
+	height: 100%;
+	max-width: 100%;
+}
+
+button {
+	cursor: pointer;
+	border: none;
+	outline: 0;
+	background-color: transparent;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+}
+
+.coin-start-animation {
+	width: 180px;
+	height: auto;
+	margin-top: -50px;
+}
+
+.coin-flip-animation {
+	width: 260px;
+	position: absolute;
+	z-index: -1;
+	bottom: -50px;
+}
+
+// add animation to the screen
+@keyframes flicker {
+	0% {
+	  opacity: 0.27861;
+	}
+	5% {
+	  opacity: 0.34769;
+	}
+	10% {
+	  opacity: 0.23604;
+	}
+	15% {
+	  opacity: 0.90626;
+	}
+	20% {
+	  opacity: 0.18128;
+	}
+	25% {
+	  opacity: 0.83891;
+	}
+	30% {
+	  opacity: 0.65583;
+	}
+	35% {
+	  opacity: 0.67807;
+	}
+	40% {
+	  opacity: 0.84693;
+	}
+	45% {
+	  opacity: 0.96019;
+	}
+	50% {
+	  opacity: 0.08594;
+	}
+	55% {
+	  opacity: 0.20313;
+	}
+	60% {
+	  opacity: 0.71988;
+	}
+	65% {
+	  opacity: 0.53455;
+	}
+	70% {
+	  opacity: 0.37288;
+	}
+	75% {
+	  opacity: 0.71428;
+	}
+	80% {
+	  opacity: 0.70419;
+	}
+	85% {
+	  opacity: 0.7003;
+	}
+	90% {
+	  opacity: 0.36108;
+	}
+	95% {
+	  opacity: 0.24387;
+	}
+	100% {
+	  opacity: 0.27861;
+	}
+}
+
+.crt::after {
+	content: " ";
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(18, 16, 16, 0.2);
+	opacity: 0;
+	z-index: 0;
+	pointer-events: none;
+	animation: flicker 0.15s infinite;
+}
+.crt::before {
+content: " ";
+display: block;
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+z-index: 0;
+pointer-events: none;
+background-size: 100% 8px, 8px 100%;
+}
+
+img {
+	visibility: visible !important;
+}
+
+.play-modal {
+	.modal__content {
+		padding: 16px;
+	}
+}

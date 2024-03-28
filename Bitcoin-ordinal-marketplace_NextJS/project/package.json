@@ -1,0 +1,35 @@
+{
+  "name": "presale",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@next/font": "13.1.6",
+    "@reduxjs/toolkit": "^2.0.1",
+    "@swc/helpers": "^0.5.3",
+    "augmented-ui": "^2.0.0",
+    "axios": "^1.6.2",
+    "boostrap": "^2.0.0",
+    "bootstrap": "^5.2.3",
+    "browserify": "^17.0.0",
+    "cors-anywhere": "^0.4.4",
+    "eslint": "8.33.0",
+    "eslint-config-next": "13.1.6",
+    "ethers": "^6.4.0",
+    "firebase": "^10.7.1",
+    "next": "^13.5.6",
+    "next-redux-wrapper": "^8.1.0",
+    "react": "18.2.0",
+    "react-bootstrap": "^2.7.0",
+    "react-countdown": "^2.3.5",
+    "react-dom": "18.2.0",
+    "react-modal": "^3.16.1",
+    "react-redux": "^9.0.4",
+    "toastr": "^2.1.4"
+  }
+}
